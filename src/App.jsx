@@ -5,8 +5,7 @@ function App() {
 
     // const URL_KEY = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=9216bb0bd27d02b044b6f1cd42af207e`
 
-    return (
-        <div className="app">
+    return (<div className="app">
             <div className="overlay">
                 <div className="container">
                     <div className="section section__inputs">
@@ -16,9 +15,10 @@ function App() {
                     </div>
 
                     <div className="section section__temperature">
-                        <div className="icon">
+                        <div className="description">
                             <h3>London, Great Britain</h3>
-                            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="weather icon showing a cloud with rain"
+                            <img src="https://openweathermap.org/img/wn/10d@2x.png"
+                                 alt="weather icon showing a cloud with rain"
                             />
                             <h3>Rainy</h3>
                             <div className="temperature">
@@ -29,7 +29,7 @@ function App() {
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        </div>)
 }
+
 export default App
