@@ -1,11 +1,21 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import SecondSection from "./components/SecondSection.jsx";
+import {getWeatherData} from "./weatherService.jsx";
 
 
 function App() {
 
-    // const URL_KEY = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=9216bb0bd27d02b044b6f1cd42af207e`
+    useEffect(() => {
+        const fetchWeatherData = async () => {
+            const data = await getWeatherData('rome')
+            console.log(data)
+        };
+        fetchWeatherData()
+            // .then(r => )
+    }, []);
 
-    return (<div className="app">
+    return (
+        <div className="app">
             <div className="overlay">
                 <div className="container">
                     <div className="section section__inputs">
@@ -13,7 +23,6 @@ function App() {
                         <button>° C</button>
                         <button>° F</button>
                     </div>
-
                     <div className="section section__temperature">
                         <div className="description">
                             <h3>London, Great Britain</h3>
@@ -25,11 +34,12 @@ function App() {
                                 <h1>10 °C</h1>
                             </div>
                         </div>
-
                     </div>
+                    <SecondSection/>
                 </div>
             </div>
-        </div>)
+        </div>
+    )
 }
 
 export default App
