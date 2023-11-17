@@ -5,48 +5,70 @@ import  './SecondSection.scss'
 const SecondSection = () => {
     return (
         <div className="section">
-            <div className="badge">
-                <div className="badge-icon">
+            <div className="weather-description">
+                <div className="icon">
                    <FaArrowDown />
                     <small>min</small>
                 </div>
                 <h2>9 °C</h2>
             </div>
-            <div className="badge">
-                <div className="badge-icon">
+            <div className="weather-description">
+                <div className="icon">
                     <FaArrowDown />
                     <small>min</small>
                 </div>
                 <h2>9 °C</h2>
             </div>
-            <div className="badge">
-                <div className="badge-icon">
+            <div className="weather-description">
+                <div className="icon">
                     <FaArrowDown />
                     <small>min</small>
                 </div>
                 <h2>9 °C</h2>
             </div>
-            <div className="badge">
-                <div className="badge-icon">
+            <div className="weather-description">
+                <div className="icon">
                     <FaArrowDown />
                     <small>min</small>
                 </div>
                 <h2>9 °C</h2>
             </div>
-            <div className="badge">
-                <div className="badge-icon">
+            <div className="weather-description">
+                <div className="icon">
                     <FaArrowDown />
                     <small>min</small>
                 </div>
                 <h2>9 °C</h2>
             </div>
-            <div className="badge">
-                <div className="badge-icon">
+            <div className="weather-description">
+                <div className="icon">
                     <FaArrowDown />
                     <small>min</small>
                 </div>
                 <h2>9 °C</h2>
             </div>
+            <div className="weather-description">
+                <div className="icon">
+                    <FaArrowDown />
+                    <small>min</small>
+                </div>
+                <h2>9 °C</h2>
+            </div>
+            <div className="weather-description">
+                <div className="icon">
+                    <FaArrowDown />
+                    <small>min</small>
+                </div>
+                <h2>9 °C</h2>
+            </div>
+            <div className="weather-description">
+                <div className="icon">
+                    <FaArrowDown />
+                    <small>min</small>
+                </div>
+                <h2>9 °C</h2>
+            </div>
+
         </div>
     )
 }

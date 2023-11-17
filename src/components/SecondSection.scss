@@ -5,16 +5,17 @@
 
 }
 
-.badge {
+.weather-description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: var(--section-overlay);
   border-radius: 14px;
+  padding: 10px;
 }
 
-.badge-icon {
+.icon {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -27,8 +28,8 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 800px) {
   .section {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr;
   }
 }

@@ -11,7 +11,7 @@ const getWeatherData = async (city, units = 'metric') => {
 
     const {weather, main: {temp, feels_like, temp_min, temp_max, pressure, humidity},
         wind: {speed},
-        sys: {country},
+        sys: {country, sunset, sunrise},
         name,
 
     } = data;
@@ -28,6 +28,8 @@ const getWeatherData = async (city, units = 'metric') => {
         humidity,
         speed,
         country,
+        sunrise,
+        sunset,
         name
     }
 
