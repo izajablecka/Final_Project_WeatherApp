@@ -1,6 +1,6 @@
 :root {
-  --section-overlay: rgba(0, 0, 0, 0.6);
-  --bgc-overlay: rgba(0, 0, 0, 0.7);
+  --section-overlay: rgba(0, 0, 0, 0.7);
+  --bgc-overlay: rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -13,15 +13,14 @@
 .app {
   width: 100%;
   height: 100vh;
-
+  background-size: cover;
+  background-position: center;
 }
 
 .overlay {
   width: 100%;
   height: 100vh;
-  background-image: url("assets/images/Warsaw.jpeg");
-  background-position: center;
-  background-size: cover;
+  background-color: var(--bgc-overlay);
 
 }
 
@@ -62,7 +61,7 @@
     margin-right: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-inline: 50px;
+    padding-inline: 60px;
     font-size: 20px;
     font-weight: 300;
     flex-wrap: wrap;
@@ -74,7 +73,7 @@
   }
 
   button {
-    padding: 10px 50px;
+    padding: 10px 60px;
     border: none;
     border-radius: 14px;
     font-size: 20px;
@@ -105,7 +104,7 @@
   }
 }
 
-.temperature>h1 {
+.temperature > h1 {
   font-size: 70px;
 }
 

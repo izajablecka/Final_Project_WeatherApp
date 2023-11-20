@@ -1,46 +1,82 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import SecondSection from "./components/SecondSection.jsx";
 import {getWeatherData} from "./components/weatherService.jsx";
-import Warsaw from "./assets/images/Warsaw.jpeg"
+import axios from "axios";
 
 
 function App() {
+    const [city, setCity] = useState('Warsaw')
+    const [weather, setWeather] = useState('');
+    const [units, setUnits] = useState('metric');
+    const [backgroundImage, setBackgroundImage] = useState(null);
+
+   const API_IMAGE_KEY = `H9Mbz7BQBwnumuIIJNazfioB3_rbtdnnOPS7NF8HHms`
+
 
     useEffect(() => {
-        const fetchWeatherData = async () => {
-            const data = await getWeatherData('warsaw')
-            console.log(data)
+        const fetchData = async () => {
+            try {
+                const weatherData = await getWeatherData(city, units);
+                setWeather(weatherData);
+            } catch (error) {
+                console.error("Error fetching weather data:", error);
+            }
         };
-        fetchWeatherData()
-            // .then(r => )
-    }, []);
+        fetchData();
+    }, [units, city]);
 
-    return (
-        <div className="app">
+
+    useEffect(() => {
+        const fetchImage = async () => {
+            try {
+                const imageData = await axios.get(`https://api.unsplash.com/photos/random?query=${city}&client_id=${API_IMAGE_KEY}`);
+                setBackgroundImage(imageData.data.urls.regular);
+            } catch (error) {
+                console.error("Error fetching background image:", error);
+            }
+        };
+        fetchImage();
+    }, [city]);
+
+    const handleUnits = (unit) => {
+        setUnits(unit);
+    };
+
+    const handleInput = (e) => {
+        if (e.key === 'Enter') {
+            setCity(e.currentTarget.value);
+            e.currentTarget.blur();
+        }
+    }
+
+    return (<div className="app" style={{backgroundImage: `url(${backgroundImage})`}}>
+
             <div className="overlay">
-                <div className="container">
-                    <div className="section section__inputs">
-                        <input type="text" name="location" placeholder="Insert city name..."/>
-                        <button>° C</button>
-                        <button>° F</button>
-                    </div>
-                    <div className="section section__temperature">
-                        <div className="description">
-                            <h3>Warsaw, Poland</h3>
-                            <img src="https://openweathermap.org/img/wn/10d@2x.png"
-                                 alt="weather icon showing a cloud with rain"
-                            />
-                            <h3>Rain</h3>
-                            <div className="temperature">
-                                <h1><b>10 °C</b></h1>
+                {weather && (<div className="container">
+                        <div className="section section__inputs">
+                            <input onKeyDown={handleInput} type="text" name="location"
+                                   placeholder="Insert city name..."/>
+                            <button onClick={() => handleUnits('metric')}>°C</button>
+                            <button onClick={() => handleUnits('imperial')}>°F</button>
+
+                        </div>
+                        <div className="section section__temperature">
+                            <div className="description">
+                                <h3>{`${weather.name}, ${weather.country}`}</h3>
+                                <img src={weather.iconURL}
+                                     alt="weather icon"
+                                />
+                                <h3>{weather.description}</h3>
+                                <div className="temperature">
+                                    <h1><b>{`${weather.temp.toFixed()} °${units === 'metric' ? 'C' : 'F'}`}</b></h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <SecondSection/>
-                </div>
+                        <SecondSection weather={weather} units={units}/>
+                    </div>)}
+
             </div>
-        </div>
-    )
+        </div>)
 }
 
 export default App
