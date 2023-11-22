@@ -9,6 +9,7 @@ function App() {
     const [weather, setWeather] = useState('');
     const [units, setUnits] = useState('metric');
     const [backgroundImage, setBackgroundImage] = useState(null);
+    const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
    const API_IMAGE_KEY = `H9Mbz7BQBwnumuIIJNazfioB3_rbtdnnOPS7NF8HHms`
 
@@ -47,15 +48,34 @@ function App() {
             setCity(e.currentTarget.value);
             e.currentTarget.blur();
         }
-    }
+    };
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentDateTime(new Date());
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalId)
+        }
+    }, []);
+    const formattedDateTime = currentDateTime.toLocaleString();
 
     return (<div className="app" style={{backgroundImage: `url(${backgroundImage})`}}>
 
             <div className="overlay">
                 {weather && (<div className="container">
+                    <div className="date-time">
+                        <p> {formattedDateTime}</p>
+                    </div>
                         <div className="section section__inputs">
-                            <input onKeyDown={handleInput} type="text" name="location"
-                                   placeholder="Insert city name..."/>
+
+                            <input
+                                onKeyDown={handleInput}
+                                type="text"
+                                name="location"
+                                placeholder="Insert city name..."
+                            />
                             <button onClick={() => handleUnits('metric')}>°C</button>
                             <button onClick={() => handleUnits('imperial')}>°F</button>
 
@@ -68,7 +88,7 @@ function App() {
                                 />
                                 <h3>{weather.description}</h3>
                                 <div className="temperature">
-                                    <h1><b>{`${weather.temp.toFixed()} °${units === 'metric' ? 'C' : 'F'}`}</b></h1>
+                                    <h1>{`${weather.temp.toFixed()} °${units === 'metric' ? 'C' : 'F'}`}</h1>
                                 </div>
                             </div>
                         </div>

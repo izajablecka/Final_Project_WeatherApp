@@ -1,6 +1,6 @@
 :root {
   --section-overlay: rgba(0, 0, 0, 0.7);
-  --bgc-overlay: rgba(0, 0, 0, 0.3);
+  --bgc-overlay: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -32,14 +32,12 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  padding: 20px;
-
+  padding: 10px;
 }
 
 .section {
   width: 100%;
   padding: 10px;
-  margin-inline: auto;
   border-radius: 4px;
   color: beige;
 }
@@ -88,6 +86,25 @@
   }
 }
 
+.date-time {
+  display: flex;
+  justify-content: center;
+  background-color: var(--section-overlay);
+  border-radius: 14px;
+  flex-wrap: wrap;
+  color: beige;
+  padding: 10px 60px;
+  border: none;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Source Code Pro', monospace;
+
+  @media screen and (max-width: 700px) {
+    margin-bottom: 8px;
+    font-size: 20px;
+  }
+}
+
 
 .description {
   display: flex;
@@ -97,6 +114,11 @@
   width: 100%;
   padding: 10px;
 
+  h1 {
+    font-size: 25px;
+    font-weight: 400;
+  }
+
   h3 {
     font-size: 25px;
     font-weight: 200;
@@ -104,12 +126,28 @@
   }
 }
 
-.temperature > h1 {
-  font-size: 70px;
+
+@media screen and (max-width: 700px) {
+  .section__inputs, .section__temperature {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  input {
+    margin-inline: auto;
+  }
 }
 
-//@media screen and (max-width: 700px) {
-//  .section__inputs, .section__temperature {
-//    width: 100%;
-//  }
-//}
+@media screen and (max-width: 700px) {
+  .description > h3, h1 {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
