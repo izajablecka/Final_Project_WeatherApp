@@ -15,7 +15,7 @@ const getWeatherData = async (city, units = 'metric') => {
         wind: {speed},
         sys: {country},
         name,
-    } = data; //object destructuring
+    } = data;
     const {description, icon} = weather[0]
 
     return {
